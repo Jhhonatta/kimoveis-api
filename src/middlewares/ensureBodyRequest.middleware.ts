@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from "express";
-import AppError from "../errors/AppError";
 import { IUserUpdate } from "../interfaces/users";
 
 const ensureBodyRequestMiddleware = async (
@@ -9,16 +8,16 @@ const ensureBodyRequestMiddleware = async (
 ) => {
   const data: IUserUpdate = req.body;
 
-  if (data.isAdm !== undefined) {
-    throw new AppError("isAdm can't be updated", 401);
-  }
+  console.log(data);
 
-  if (data.isActive !== undefined) {
-    throw new AppError("isActive can't be updated", 401);
-  }
-
-  if (data.id !== undefined) {
-    throw new AppError("id can't be updated", 401);
+  if (
+    data.isAdm !== undefined ||
+    data.isActive !== undefined ||
+    data.id !== undefined
+  ) {
+    return res.status(401).json({
+      message: "Key invalid",
+    });
   }
 
   return next();

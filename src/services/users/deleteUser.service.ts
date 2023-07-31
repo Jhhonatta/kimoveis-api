@@ -7,7 +7,7 @@ const deleteUserService = async (id: string) => {
   const foundUser: IUser = await userRepository.findOneBy({ id });
 
   await userRepository.softDelete(foundUser);
-  await userRepository.save({ ...foundUser, isActive: false });
+  const user = await userRepository.save({ ...foundUser, isActive: false });
 
   return;
 };

@@ -26,6 +26,10 @@ const loginUserService = async (data: IUserLogin): Promise<string> => {
     throw new AppError("User or password invalid", 403);
   }
 
+  if (!user.isActive) {
+    throw new AppError("User deleted", 400);
+  }
+
   const token = jwt.sign(
     {
       email: user.email,

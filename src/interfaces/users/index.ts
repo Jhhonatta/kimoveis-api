@@ -29,12 +29,6 @@ export interface IUserUpdate {
   id?: string;
 }
 
-export interface IUserUpdateRequest {
-  id: string;
-  email: string;
-  isAdm: boolean;
-}
-
 export interface IUserComplete {
   id: string;
   name: string;

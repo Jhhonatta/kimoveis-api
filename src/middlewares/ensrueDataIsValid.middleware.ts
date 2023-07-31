@@ -15,7 +15,7 @@ const ensureDataIsValidMiddleware =
       return next();
     } catch (error) {
       return res.status(400).json({
-        error: error.errors,
+        message: error.errors[0],
       });
     }
   };

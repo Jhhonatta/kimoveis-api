@@ -1,5 +1,4 @@
 import { IUser, IUserRequest } from "../../interfaces/users";
-import AppError from "../../errors/AppError";
 
 import AppDataSource from "../../data-source";
 
@@ -9,14 +8,6 @@ import { userWithoutPasswordSerializer } from "../../serializers/user.serializer
 
 const createUserService = async (userData: IUserRequest): Promise<IUser> => {
   const userRepository = AppDataSource.getRepository(User);
-
-  const verifyUser = await userRepository.findOneBy({
-    email: userData.email,
-  });
-
-  if (verifyUser) {
-    throw new AppError("Email invalid", 400);
-  }
 
   const user = userRepository.create(userData);
 

@@ -3,6 +3,7 @@ import AppDataSource from "../../data-source";
 import { IUser } from "../../interfaces/users";
 
 import { User } from "../../entities/user.enity";
+
 import { listUserWithoutPasswordSerializer } from "../../serializers/user.serializers";
 
 const listUsersService = async (): Promise<IUser[]> => {
@@ -10,14 +11,12 @@ const listUsersService = async (): Promise<IUser[]> => {
 
   const listUser = await userRepository.find();
 
-  const listAllUsers = await listUserWithoutPasswordSerializer.validate(
-    listUser,
-    {
+  const listUserWithoutPassword =
+    await listUserWithoutPasswordSerializer.validate(listUser, {
       stripUnknown: true,
-    }
-  );
+    });
 
-  return listAllUsers;
+  return listUserWithoutPassword;
 };
 
 export default listUsersService;

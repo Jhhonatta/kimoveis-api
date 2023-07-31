@@ -8,9 +8,11 @@ import {
   BeforeInsert,
   BeforeUpdate,
   DeleteDateColumn,
+  OneToMany,
 } from "typeorm";
 
 import { getRounds } from "bcryptjs";
+import { Schedules } from "./schedules.enity";
 
 @Entity("users")
 class User {
@@ -49,6 +51,9 @@ class User {
 
   @DeleteDateColumn()
   deletedAt: Date;
+
+  @OneToMany(() => Schedules, (schedule) => schedule.user)
+  schedules: Schedules[];
 }
 
 export { User };

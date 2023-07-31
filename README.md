@@ -2,7 +2,8 @@
 
 Nessa **API** foi desenvolvido um serviço de back-end responsável por gerenciar uma imobiliária utilizando TypeORM e relacionamentos com base no diagrama abaixo:
 
-## Representação: 
+## Representação:
+
 ![image](https://user-images.githubusercontent.com/101838666/210680737-dfced207-47ec-4d63-9d5c-45c871a7d451.png)
 
 ## 👨🏻‍💻 Executando o projeto ou o teste
@@ -23,11 +24,13 @@ yarn test
 ```
 
 ### User
+
 **Rotas de criação de usuario:**
 
 ### POST: /users
 
 **Request**
+
 ```
 {
     "name": "Joana",
@@ -51,28 +54,26 @@ yarn test
 }
 ```
 
-
 ### POST: /login
 
 **Request**
 
 ```
 {
-    
+
     "email": "jorge@kenzie.com",
     "password": "123456"
- 
+
 }
 ```
 
 **Response - 200 - Ok**
 
-````
+```
 {
 	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9yZ2UiLCJpZCI6Ijk1ZGUxMjliLWZjOTYtNGM3MC1iNTdlLTQ5ZGMxY2I5ZmZiNiIsImlhdCI6MTY3Mjg4Mjk5MywiZXhwIjoxNjcyOTY5MzkzLCJzdWIiOiI5NWRlMTI5Yi1mYzk2LTRjNzAtYjU3ZS00OWRjMWNiOWZmYjYifQ.H1QS3gcBspxP6G3ZIP-KqWUfrMEhQHiFM0C2CgS7kX0"
 }
-````
-
+```
 
 ## Rotas que necessitam de autenticação:
 
@@ -80,7 +81,7 @@ yarn test
 
 **Response - 200 - Ok**
 
-````
+```
 [
 	{
 		"id": "7d00dedb-7ab6-4e04-b9b4-d3daef7085a7",
@@ -110,23 +111,24 @@ yarn test
 		"updatedAt": "2022-12-15T01:22:05.647Z"
 	}
 ]
-````
+```
+
 ## Rota necessita que o usuario esteja logado como Adm
 
 ### PATCH: /users/:id (id do usuario)
 
 **Request**
 
-````
+```
 {
     "email": "jorge2023@kenzie.com",
     "password": "novaSenha"
 }
-````
+```
 
 **Response - 200 - Ok**
 
-````
+```
 [
 	{
 		"id": "95de129b-fc96-4c70-b57e-49dc1cb9ffb6",
@@ -139,42 +141,42 @@ yarn test
 		"updatedAt": "2023-01-05T01:40:00.749Z"
 	}
 ]
-````
+```
 
 ### DELETE: /users/:id (id do usuario)
 
 **Response - 204 - No Content**
 
-
-
 ## Categories
+
 **Rotas de criação de categorias:**
 
 ## Rota necessita que o usuario esteja logado como Adm
 
-### POST: /categories 
+### POST: /categories
 
 **Request**
-````
+
+```
 {
     "name": "Terrenos"
 }
-````
+```
 
 **Response - 201 - Created**
 
-````
+```
 {
     "name": "Terrenos",
     "id": "e5f1c308-0d74-4e2d-977b-83075cc4adb2"
 }
-````
+```
 
 ### GET: /categories
 
 **Response - 200 - Ok**
 
-````
+```
 [
 	{
 		"id": "1a758f52-2080-46fd-a16d-558198856308",
@@ -189,9 +191,10 @@ yarn test
 		"name": "Terreno"
 	}
 ]
-````
+```
 
 ## Propriedades
+
 **Rotas de criação de propriedades:**
 
 ## Rota necessita que o usuario esteja logado como Adm
@@ -200,7 +203,7 @@ yarn test
 
 **Request**
 
-````
+```
 {
     "value": 1000000,
     "size": 350,
@@ -213,11 +216,11 @@ yarn test
     },
     "categoryId": "27b51517-0deb-4ca0-ae0a-b4dbd3d67488"
 }
-````
+```
 
 **Response - 201 - Created**
 
-````
+```
 {
      "value": 1000000,
      "size": 350,
@@ -238,13 +241,13 @@ yarn test
      "createdAt": "2022-12-22T17:36:17.065Z",
      "updatedAt": "2022-12-22T17:36:17.065Z"
 }
-````
+```
 
 ### GET: /properties
 
 **Response - 200 - Ok**
 
-````
+```
 [
 	{
 		"id": "6da96b52-7fda-49fa-b477-47939420a501",
@@ -295,13 +298,14 @@ yarn test
 		}
 	}
 ]
-````
-
+```
 
 ## Horários
+
 **Rotas de agendamento para visita de uma propiedade:**
 
 ## Rota necessita que o usuario esteja logado como Adm
+
 **Obs: Agendamento de horários somente em horário comercial, de segunda à sexta das 8h às 18h.**
 **O usuario logado, pode agendar somente uma visita por horário.**
 **A propriedade pode receber somente uma visita por horario**
@@ -310,28 +314,27 @@ yarn test
 
 **Request**
 
-````
+```
 {
    "date": "04/25/1998",
    "time": "12:00",
    "propertyId": "f7b71adc-4ee2-4a20-a861-ae7788b06d78"
 }
-````
+```
 
 **Response - 201 - Created**
 
-````
+```
 {
 	"message": "Appointment successfully scheduled"
 }
-````
-
+```
 
 ### GET: /schedules/:id (id da propriedade)
 
 **Response - 200 - Ok**
 
-````
+```
 {
 	"schedules": [
 		{
@@ -366,14 +369,9 @@ yarn test
 		}
 	]
 }
-````
+```
 
-
-
-## Testes realizado ultilizando Jest  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" height="23" alt="jest icon"  />:
+## Testes realizado ultilizando Jest <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" height="23" alt="jest icon"  />:
 
 ![image](https://user-images.githubusercontent.com/101838666/210904099-19c5e9c5-386c-4a54-811f-929aef2ced37.png)
 ![image](https://user-images.githubusercontent.com/101838666/210904949-d34687cb-a5c8-44ad-8142-499a41083501.png)
-
-
-

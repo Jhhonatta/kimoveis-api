@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express";
+import AppError from "../errors/AppError";
 
 const ensureIsAdmMiddleware = async (
   req: Request,
@@ -6,9 +7,7 @@ const ensureIsAdmMiddleware = async (
   next: NextFunction
 ) => {
   if (!req.user.isAdm) {
-    return res.status(403).json({
-      message: "Not permission",
-    });
+    throw new AppError("Not permission", 403);
   }
 
   return next();

@@ -18,12 +18,14 @@ import {
 import ensureBodyRequestMiddleware from "../middlewares/ensureBodyRequest.middleware";
 import ensureVerifyPermissionMiddleware from "../middlewares/ensureVerifyPermission.middleware";
 import ensureVerifyIsActiveMiddleware from "../middlewares/ensureVerifyIsActive.middleware";
+import ensureVerifyUserExistMiddleware from "../middlewares/ensureVerifyUserExist.middleware";
 
 const userRoutes = Router();
 
 userRoutes.post(
   "/users",
   ensureDataIsValidMiddleware(userSerializer),
+  ensureVerifyUserExistMiddleware,
   createUserController
 );
 userRoutes.get(
