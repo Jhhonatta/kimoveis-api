@@ -5,13 +5,21 @@ Nessa **API** foi desenvolvido um serviço de back-end responsável por gerencia
 ## Representação: 
 ![image](https://user-images.githubusercontent.com/101838666/210680737-dfced207-47ec-4d63-9d5c-45c871a7d451.png)
 
-👨🏻‍💻 Executando o projeto
-Utilize o yarn ou o npm install para instalar as dependências do projeto. Em seguida, inicie o projeto.
+## 👨🏻‍💻 Executando o projeto ou o teste
 
-```
+Utilize o **yarn** ou o **npm install** para instalar as dependências do projeto.
+Em seguida, inicie o projeto ou o teste.
+
 Iniciando a versão web:
 
+```cl
 yarn start ou npm run dev
+```
+
+Iniciando o test:
+
+```cl
+yarn test
 ```
 
 ### User
