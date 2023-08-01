@@ -1,4 +1,4 @@
-# KImóveis - TypeORM com Relacionamentos
+# KImóveis - PostgreSQL - TypeORM com Relacionamentos
 
 Nessa **API** foi desenvolvido um serviço de back-end responsável por gerenciar uma imobiliária utilizando TypeORM e relacionamentos com base no diagrama abaixo:
 
